@@ -31,6 +31,9 @@ const config = {
   typedRoutes: true,
   experimental: {
     reactCompiler: true,
+    serverActions: {
+      bodySizeLimit: "10mb"
+    }
   },
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -62,7 +65,11 @@ const config = {
       {
         protocol: "https",
         hostname: "storage.sjcet.in"
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'pub-190c687b5f3a4e64bff7685431f7c8fd.r2.dev',
+      },
     ],
   },
   eslint: {

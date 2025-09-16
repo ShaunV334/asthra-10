@@ -64,6 +64,7 @@ export const eventType = {
   ASTHRA_PASS_EVENT: false,
   COMPETITION: true,
   WORKSHOP: true,
+  EXHIBITION: true
 } as const; // + "NA" for other events
 
 export const registrationTypeEnum: { [k in string]: string } = {
@@ -99,7 +100,7 @@ export const AsthraStartsAt = new Date(1741231800000);
  *
  * Mon March 03 2025 11:59:00 GMT+0530 (India Standard Time)
  * */
-export const AsthraLastEditDay = new Date("2025-09-11");
+export const AsthraLastEditDay = new Date("2025-09-16");
 
 export const getTimeUtils = (date: Date) => {
   if (date instanceof Date) {

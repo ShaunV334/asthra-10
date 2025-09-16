@@ -65,6 +65,7 @@ export const eventTypeEnum = pgEnum('eventTypeEnum', [
   'ASTHRA_PASS_EVENT',
   'WORKSHOP',
   'COMPETITION',
+  'EXHIBITION'
 ]);
 
 export const transactionsTable = pgTable(
@@ -150,7 +151,7 @@ export const eventsTable = pgTable(
     registrationType: registrationType().default('both').notNull(),
     regLimit: integer().default(Number.POSITIVE_INFINITY).notNull(),
     regCount: integer().default(0).notNull(),
-    redirectUrl: text()
+    redirectUrl: text().default("")
   },
   (event) => ({
     createdByIdIndex: index().on(event.createdById),

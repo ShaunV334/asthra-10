@@ -17,6 +17,7 @@ import { signIn, useSession } from "@/hooks/session";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { NoiseTexture } from "@/components/noise-texture";
+import { cdn } from "@/lib/cdn";
 
 const GOOGLE_SVG: React.FC = () => {
   return (
@@ -74,7 +75,7 @@ const LoginPage = () => {
       {/* Side navigation bars */}
       <div className="fixed left-6 top-1/2 -translate-y-1/2 z-30 hidden md:block">
         <Image
-          src="/assets/side.png"
+          src={cdn("/assets/side.png")}
           alt="Left navigation"
           width={30}
           height={500}
@@ -84,7 +85,7 @@ const LoginPage = () => {
 
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-30 hidden md:block">
         <Image
-          src="/assets/side.png"
+          src={cdn("/assets/side.png")}
           alt="Right navigation"
           width={30}
           height={500}
@@ -97,22 +98,22 @@ const LoginPage = () => {
         <div className="hidden md:flex items-center w-full max-w-6xl">
           {/* Left Logo */}
           <div className="px-6 py-2 bg-transparent border border-black rounded-full font-black tracking-widest text-black">
-            <Image src="/assets/ASTHRA.svg" alt="asthra" width={60} height={10} className="relative" />
+            <Image src={cdn("/assets/ASTHRA.svg")} alt="asthra" width={60} height={10} className="relative" />
           </div>
 
           {/* Connector Line */}
           <div className="flex items-center -ml-px">
-            <div className="w-8 h-[2px] bg-gray-600"></div>
-            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px"></div>
-            <div className="w-12 h-[2px] bg-gray-600 -mx-px"></div>
-            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px"></div>
-            <div className="w-3 h-[2px] bg-gray-600 -mx-px"></div>
-            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px"></div>
-            <div className="w-3 h-[2px] bg-gray-600 -mx-px"></div>
-            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px"></div>
-            <div className="w-12 h-[2px] bg-gray-600 -mx-px"></div>
-            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px"></div>
-            <div className="w-8 h-[2px] bg-gray-600"></div>
+            <div className="w-8 h-[2px] bg-gray-600" />
+            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px" />
+            <div className="w-12 h-[2px] bg-gray-600 -mx-px" />
+            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px" />
+            <div className="w-3 h-[2px] bg-gray-600 -mx-px" />
+            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px" />
+            <div className="w-3 h-[2px] bg-gray-600 -mx-px" />
+            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px" />
+            <div className="w-12 h-[2px] bg-gray-600 -mx-px" />
+            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px" />
+            <div className="w-8 h-[2px] bg-gray-600" />
           </div>
 
           {/* Center Nav Links */}
@@ -124,17 +125,17 @@ const LoginPage = () => {
 
           {/* Connector Line */}
           <div className="flex items-center -ml-px">
-            <div className="w-8 h-[2px] bg-gray-600"></div>
-            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px"></div>
-            <div className="w-12 h-[2px] bg-gray-600 -mx-px"></div>
-            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px"></div>
-            <div className="w-3 h-[2px] bg-gray-600 -mx-px"></div>
-            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px"></div>
-            <div className="w-3 h-[2px] bg-gray-600 -mx-px"></div>
-            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px"></div>
-            <div className="w-12 h-[2px] bg-gray-600 -mx-px"></div>
-            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px"></div>
-            <div className="w-8 h-[2px] bg-gray-600"></div>
+            <div className="w-8 h-[2px] bg-gray-600" />
+            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px" />
+            <div className="w-12 h-[2px] bg-gray-600 -mx-px" />
+            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px" />
+            <div className="w-3 h-[2px] bg-gray-600 -mx-px" />
+            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px" />
+            <div className="w-3 h-[2px] bg-gray-600 -mx-px" />
+            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px" />
+            <div className="w-12 h-[2px] bg-gray-600 -mx-px" />
+            <div className="w-2 h-2 border-2 border-gray-600 rounded-full -mx-px" />
+            <div className="w-8 h-[2px] bg-gray-600" />
           </div>
 
           {/* User Actions */}
@@ -157,7 +158,7 @@ const LoginPage = () => {
           <section className="flex flex-col items-center relative min-h-screen px-4 pt-24">
             <div className="w-full flex justify-center mb-8">
               <Image
-                src="/asthra.svg"
+                src={cdn("/asthra.svg")}
                 alt="ASTHRA Login"
                 width={200}
                 height={100}

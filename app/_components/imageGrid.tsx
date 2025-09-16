@@ -1,60 +1,60 @@
+"use client"; // masonic is a client-side library
+
 import React from 'react';
 import Image from 'next/image';
+import { Masonry } from 'masonic';
+import { cdn } from '@/lib/cdn';
 
-const gridItems = [
-    { id: 1, imgSrc: "/assets/image_placeholder.webp", span: "row-span-1" }, 
-    { id: 2, imgSrc: "/assets/image_placeholder.webp", span: "row-span-2" }, 
-    { id: 3, imgSrc: "/assets/image_placeholder.webp", span: "row-span-1" },
-    { id: 4, imgSrc: "/assets/image_placeholder.webp", span: "row-span-2" },
-    { id: 5, imgSrc: "/assets/image_placeholder.webp", span: "row-span-2" }, 
-    { id: 6, imgSrc: "/assets/image_placeholder.webp", span: "row-span-2" }, 
-    { id: 7, imgSrc: "/assets/image_placeholder.webp", span: "row-span-2" }, 
-    { id: 8, imgSrc: "/assets/image_placeholder.webp", span: "row-span-1" }, 
-    { id: 9, imgSrc: "/assets/image_placeholder.webp", span: "row-span-1" }, 
-    { id: 10, imgSrc: "/assets/image_placeholder.webp", span: "row-span-2" },
-    { id: 11, imgSrc: "/assets/image_placeholder.webp", span: "row-span-1" },
-    { id: 12, imgSrc: "/assets/image_placeholder.webp", span: "row-span-2" },
-    { id: 13, imgSrc: "/assets/image_placeholder.webp", span: "row-span-1" },
+// --- Your Image Data ---
+const imageData = [
+    { id: 1, src: cdn("/assets/grid/img1.webp"), width: 800, height: 1200, alt: "image1" },
+    { id: 2, src: cdn("/assets/grid/img2.webp"), width: 1000, height: 800, alt: "image2" },
 
-    { id: 14, imgSrc: "/assets/image_placeholder.webp", span: "row-span-2" },
-    { id: 15, imgSrc: "/assets/image_placeholder.webp", span: "row-span-1" },
-    { id: 15, imgSrc: "/assets/image_placeholder.webp", span: "row-span-1" },
+    { id: 4, src: cdn("/assets/grid/img4.webp"), width: 800, height: 1100, alt: "image4" },
+    { id: 5, src: cdn("/assets/grid/img5.webp"), width: 1200, height: 800, alt: "image5" },
+    { id: 6, src: cdn("/assets/grid/img6.webp"), width: 800, height: 1000, alt: "image6" },
+    { id: 7, src: cdn("/assets/grid/img7.webp"), width: 1000, height: 700, alt: "image7" },
+    { id: 8, src: cdn("/assets/grid/img8.webp"), width: 800, height: 900, alt: "image8" },
 
-    
+    { id: 9, src: cdn("/assets/grid/img9.webp"), width: 700, height: 1000, alt: "image9" },
+    { id: 10, src: cdn("/assets/grid/img10.webp"), width: 1100, height: 800, alt: "image10" },
+    { id: 11, src: cdn("/assets/grid/img11.webp"), width: 800, height: 1200, alt: "image11" },
+    { id: 11, src: cdn("/assets/grid/img12.webp"), width: 800, height: 1200, alt: "image12" },
 ];
 
-
-interface GridCellProps {
-    imgSrc: string;
-    span: string;
-}
-
-
-const GridCell = ({ imgSrc, span }: GridCellProps) => {
+// masonic requires a component to render each item.
+// The 'data' prop here contains one item from the 'imageData' array.
+const MasonryCard = ({ data }: { data: typeof imageData[0] }) => {
     return (
-        <div
-            className={`${span} relative rounded-xl overflow-hidden border border-gray-300 shadow-sm`}
-        >
+        <div className="rounded-xl overflow-hidden group">
             <Image
-                src={imgSrc}
-                alt="Wavy pattern background"
-                fill 
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Helps Next.js optimize image loading
+                src={data.src}
+                alt={data.alt}
+                width={data.width}
+                height={data.height}
+                className="w-full h-auto transition-transform duration-300 ease-in-out group-hover:scale-105"
+                priority={data.id <= 4} // Prioritize the first few images
             />
         </div>
     );
 };
 
-
 export default function ImageGrid() {
     return (
-        <div className="p-6 w-full">
-            <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[150px] gap-4 max-w-5xl mx-auto">
-                {gridItems.map((item) => (
-                    <GridCell key={item.id} imgSrc={item.imgSrc} span={item.span} />
-                ))}
-            </div>
+        <div className="p-4 w-full max-w-5xl mx-auto">
+            <Masonry
+                // Provides the data to the grid
+                items={imageData}
+                // The component to render for each item
+                render={MasonryCard}
+                // This tells masonic how wide each column should be.
+                // It will automatically calculate how many columns can fit.
+                columnWidth={230}
+                // The space between columns
+                columnGutter={16}
+                // How many items to render off-screen for smoother scrolling
+                overscanBy={5}
+            />
         </div>
     );
 }
